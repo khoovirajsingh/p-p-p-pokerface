@@ -3,8 +3,10 @@
 (defn rank [card]
   nil)
 
-(defn suit [card]
-  nil)
+(defn suit 
+  [card]
+  (let [[_ suit] card]
+    (str suit)))
 
 (defn pair? [hand]
   nil)
