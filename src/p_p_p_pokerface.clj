@@ -63,8 +63,13 @@
          (= (apply max freqs) 3)      
          (= (apply min freqs) 2))))
 
-(defn two-pairs? [hand]
-  nil)
+(defn two-pairs? 
+  [hand]
+  (let [freqs (vals (frequencies (map rank hand)))]    
+    (or (and         
+             (= (apply max freqs) 2)         
+             (= (count freqs) 3))        
+        (four-of-a-kind? hand))))
 
 (defn straight? [hand]
   nil)
