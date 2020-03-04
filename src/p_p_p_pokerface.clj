@@ -56,8 +56,12 @@
     (apply = suits)))
 
 
-(defn full-house? [hand]
-  nil)
+(defn full-house? 
+  [hand]
+  (let [freqs (vals (frequencies (map rank hand)))]    
+    (and      
+         (= (apply max freqs) 3)      
+         (= (apply min freqs) 2))))
 
 (defn two-pairs? [hand]
   nil)
