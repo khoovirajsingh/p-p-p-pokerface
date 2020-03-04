@@ -50,8 +50,11 @@
   [hand]
   (contains-kind? hand 4))
 
-(defn flush? [hand]
-  nil)
+(defn flush? 
+  [hand]
+  (let [suits (map suit hand)]
+    (apply = suits)))
+
 
 (defn full-house? [hand]
   nil)
