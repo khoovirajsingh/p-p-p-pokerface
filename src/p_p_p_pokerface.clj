@@ -28,20 +28,27 @@
   (let [[_ suit] card]
     (str suit)))
 
-(contains? (set (vals (frequencies (map rank ["2H" "3H"])))) 2)
+
+(defn contains-kind?
+  [hand kind]
+  (let [ranks (map rank hand)
+        rank-count (frequencies ranks)]
+    (contains? (set (vals rank-count)) kind)))
+  
 
 (defn pair? 
   [hand]
-  (let [ranks (map rank hand)
-        rank-count (frequencies ranks)]
-    (contains? (set (vals rank-count)) 2)))
+  (contains-kind? hand 2))
 
 
-(defn three-of-a-kind? [hand]
-  nil)
+(defn three-of-a-kind? 
+  [hand]
+  (contains-kind? hand 3))
 
-(defn four-of-a-kind? [hand]
-  nil)
+
+(defn four-of-a-kind? 
+  [hand]
+  (contains-kind? hand 4))
 
 (defn flush? [hand]
   nil)
